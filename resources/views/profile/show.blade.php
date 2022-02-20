@@ -22,7 +22,7 @@
 		<div class="settings">
 			<div class="container">
 				<div class="setting-avatar">
-					<img src="{{asset('images/square6.jpg')}}" alt="image-demo">
+					<img src="{{asset('images/profile.jpg')}}" alt="image-demo">
 					<div class="btn-upload-picture">
 						<div class="form">
 							<label for="avatar-picture">

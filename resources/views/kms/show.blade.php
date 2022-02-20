@@ -17,7 +17,7 @@
 			<div class="col-4">
 				<div class="header-profile">
 					<div class="container">
-						<img src="{{ asset('images/square6.jpg') }}" alt="image-demo">
+						<img src="{{ asset('images/profile.jpg') }}" alt="image-demo">
 					</div>
 				</div>
 			</div>

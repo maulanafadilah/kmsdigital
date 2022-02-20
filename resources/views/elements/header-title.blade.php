@@ -5,7 +5,7 @@
 			<div class="title title-home">{{$page_title}}</div>
 		</div>
 		<div class="right">
-			<a href="#menu" class="link menu-link"><img src="images/square6.jpg" alt=""></a>
+			<a href="#menu" class="link menu-link"><img src="images/profile.jpg" alt=""></a>
 		</div>
 	</div>
 <!-- end navbar -->

@@ -6,7 +6,7 @@
 		
 
 		<div class="section-title title-large">
-			<span class="overline-title">Halo, Tri Cahaya!</span>
+			<span class="overline-title">Halo, {{auth()->user()->nama_lengkap}}!</span>
 			<h3>Selamat Datang di KMS Digital</h3>
 		</div>
 
@@ -128,7 +128,7 @@
 			@foreach ($blog as $item)
 			<div class="container">
 				<div class="card card-image card-outline">
-					<img src="images/horizontal5.jpg" class="card-img" alt="image-demo">
+					<img src="{{asset('storage/'.$item->gambar)}}" class="card-img" alt="image-demo">
 					<div class="card-body">
 						<h5 class="card-title">{{$item->judul}}</h5>
 						<!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, veniam.</p> -->

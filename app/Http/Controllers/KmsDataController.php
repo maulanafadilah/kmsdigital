@@ -6,6 +6,7 @@ use App\Models\Balita;
 use App\Models\Biodata;
 use App\Models\Kehadiran;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class KmsDataController extends Controller
 {
@@ -21,7 +22,6 @@ class KmsDataController extends Controller
         $bottom = true;
         $footer = false;
         $header = 'header-title';
-        
         $nomor_telepon = auth()->user()->nomor_telepon;
 
         // $biodata = Biodata::find($nomor_telepon);
@@ -75,16 +75,48 @@ class KmsDataController extends Controller
      */
     public function show($id)
     {
+        // $page_title = 'Detail KMS';
+        // $action = __FUNCTION__;
+		// $bottom = false;
+        // $footer = false;
+        // $header = 'header-back';
+
+        // $balita = Balita::find($id);
+        // $kehadiran = Kehadiran::where('nik', $balita->nik)->get();
+
+        // return view('kms.show', compact('page_title', 'action', 'bottom', 'footer', 'header'), ['balita'=>$balita, 'kehadiran'=>$kehadiran]);
+        $balita = Balita::find($id);
+        $gd = Balita::where('id', $id)->get('jenis_kelamin');
+
         $page_title = 'Detail KMS';
         $action = __FUNCTION__;
-		$bottom = false;
+        $bottom = false;
         $footer = false;
         $header = 'header-back';
 
-        $balita = Balita::find($id);
+        $blt = DB::table('balitas')->where('id', $id)->value('nik');
+        $s = json_encode($blt);
+        $khrn = Kehadiran::where('nik', $s)->get('berat');
+
+        foreach ($gd as $student) {
+            $dataPoints2 = array(
+                $student['jenis_kelamin'],
+            );
+        }
+        $md = json_encode($dataPoints2);
+
+
+        foreach ($khrn as $student) {
+
+            $dataPoints[] = array(
+                $student['berat'],
+            );
+        }
+        $md2 = json_encode($dataPoints);
+
         $kehadiran = Kehadiran::where('nik', $balita->nik)->get();
 
-        return view('kms.show', compact('page_title', 'action', 'bottom', 'footer', 'header'), ['balita'=>$balita, 'kehadiran'=>$kehadiran]);
+        return view('kms.show', compact('md', 'md2', 'page_title', 'action', 'bottom', 'footer', 'header'), ['balita' => $balita, 'kehadiran' => $kehadiran]);
     }
 
     /**
